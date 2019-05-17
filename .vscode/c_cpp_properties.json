@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/devkitPro/libnx/include/**",
+                "C:/devkitPro/portlibs/switch/include/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.17134.0",
+            "compilerPath": "C:/devkitPro/devkitA64/bin/aarch64-none-elf-g++.exe"
+        }
+    ],
+    "version": 4
+}
