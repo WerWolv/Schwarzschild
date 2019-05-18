@@ -4,20 +4,18 @@
 #include <schwarzschild/utils/types.hpp>
 
 namespace schwarzschild::ui {
-    class Image : public IUIElement {
+    class Text : public IUIElement {
     public:
-        Image(schwarzschild::utils::ImageArgs args) : schwarzschild::ui::IUIElement(args) {
+        Text(schwarzschild::utils::TextArgs args) : schwarzschild::ui::IUIElement(args) {
             m_args = args;
 
-            m_surface = IMG_Load(args.path.c_str());
+            // TODO: Support color schemes
 
-            if (!m_surface) {
-                SDL_Log("IMG_Load: %s\n", IMG_GetError());
-                SDL_Quit();
-            }
+            SDL_Color White = {255, 255, 255};
+            m_surface = TTF_RenderText_Blended(args.font, args.text.c_str(), White);
         }
         
-        ~Image() {
+        ~Text() {
             SDL_FreeSurface(m_surface);
         }
 
@@ -28,11 +26,9 @@ namespace schwarzschild::ui {
             int textureHeight = 0;
 
             SDL_QueryTexture(texture, NULL, NULL, &textureWidth, &textureHeight);
-
             SDL_Rect rect = { m_args.x, m_args.y, textureWidth, textureHeight };
-            SDL_RenderCopy(renderer, texture, NULL, &rect);
 
-            SDL_DestroyTexture(texture);
+            SDL_RenderCopy(renderer, texture, NULL, &rect);
         }
 
         void update() {
@@ -43,7 +39,7 @@ namespace schwarzschild::ui {
 
         }
     private:
-        schwarzschild::utils::ImageArgs m_args;
+        schwarzschild::utils::TextArgs m_args;
         SDL_Surface* m_surface;
     };
 }

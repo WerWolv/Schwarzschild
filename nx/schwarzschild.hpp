@@ -5,11 +5,12 @@ enum {
 };
 
 enum {
-    SchwarzschildError_AlreadyExists = 1,
-    SchwarzschildError_NotFound = 2,
-
+    SchwarzschildError_AlreadyExists     = 1,
+    SchwarzschildError_NotFound          = 2,
+    SchwarzschildError_FontLoadingFailed = 10
 };
 
 #include <schwarzschild/application.hpp>
 #include <schwarzschild/ui/button.hpp>
 #include <schwarzschild/ui/image.hpp>
+#include <schwarzschild/ui/text.hpp>

@@ -35,8 +35,10 @@ namespace schwarzschild {
                 }
             }
 
-            plGetSharedFontByType(&fontData, PlSharedFontType_Standard);
-            plGetSharedFontByType(&fontDataExt, PlSharedFontType_NintendoExt);
+            Result rc = plInitialize();
+            if (R_FAILED(rc)) {
+                fatalSimple(rc);
+            }
 
             TTF_Init();
 
@@ -131,8 +133,6 @@ namespace schwarzschild {
 
         std::map<std::string, Gui*> m_registeredGuis;
         std::string m_currGui;
-
-        PlFontData fontData, fontDataExt;
 
         bool m_buttonDown[32];
     };
