@@ -13,26 +13,27 @@ namespace schwarzschild::ui {
 
             if (!m_surface) {
                 SDL_Log("IMG_Load: %s\n", IMG_GetError());
-                SDL_Quit();
             }
+
+            m_texture = nullptr;
         }
         
         ~Image() {
             SDL_FreeSurface(m_surface);
+            SDL_DestroyTexture(m_texture);
         }
 
         void render(SDL_Renderer *renderer) {
-            SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, m_surface);
+            if (m_texture == nullptr)
+                m_texture = SDL_CreateTextureFromSurface(renderer, m_surface);
 
             int textureWidth  = 0;
             int textureHeight = 0;
 
-            SDL_QueryTexture(texture, NULL, NULL, &textureWidth, &textureHeight);
+            SDL_QueryTexture(m_texture, NULL, NULL, &textureWidth, &textureHeight);
 
             SDL_Rect rect = { m_args.x, m_args.y, textureWidth, textureHeight };
-            SDL_RenderCopy(renderer, texture, NULL, &rect);
-
-            SDL_DestroyTexture(texture);
+            SDL_RenderCopy(renderer, m_texture, NULL, &rect);
         }
 
         void update() {
@@ -45,5 +46,6 @@ namespace schwarzschild::ui {
     private:
         schwarzschild::utils::ImageArgs m_args;
         SDL_Surface* m_surface;
+        SDL_Texture* m_texture;
     };
 }

@@ -48,8 +48,13 @@ namespace schwarzschild {
         ~Application() {
             for (auto [name, gui] : m_registeredGuis)
                 delete gui;
-
+                
             m_registeredGuis.clear();
+
+            plExit();
+
+            TTF_Quit();
+            IMG_Quit();
 
             SDL_DestroyRenderer(m_renderer);
             SDL_DestroyWindow(m_window);

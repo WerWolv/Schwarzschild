@@ -26,7 +26,8 @@ namespace schwarzschild {
         }
 
         virtual ~Gui() {
-
+            for (int i = 0; i < m_uiElements.size(); i++)
+                delete m_uiElements[i];
         }
     
         virtual void render(SDL_Renderer **renderer) = 0;
