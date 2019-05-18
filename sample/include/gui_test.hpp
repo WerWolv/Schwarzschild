@@ -1,6 +1,6 @@
 #pragma once
 
-#include <schwarzschild/gui.hpp>
+#include <schwarzschild.hpp>
 
 class GuiTest : public schwarzschild::Gui {
 public:
@@ -8,6 +8,8 @@ public:
         printf("GuiTest constr\n");
 
         Gui::registerButtonHandler(KEY_PLUS, Gui::InputType::KEY_DOWN, std::bind(&GuiTest::onPlusButtonPressed, this));
+
+        Gui::addUIElement<schwarzschild::ui::Button>(schwarzschild::utils::ButtonArgs(50, 50, 500, 100, "Test"));
     }
 
     ~GuiTest() {
@@ -33,9 +35,6 @@ public:
 
     void render(SDL_Renderer **renderer) override {
         static int x = 0, w = 1920, h = 1080;
-        SDL_SetRenderDrawColor(*renderer, 0, 0, 0, 255);
-        SDL_RenderClear(*renderer);
-
         // fill window bounds
         SDL_SetRenderDrawColor(*renderer, 111, 111, 111, 255);
         SDL_Rect f = {0, 0, w, h};
@@ -43,8 +42,6 @@ public:
 
         draw_rects(*renderer, x, 0);
         draw_rects(*renderer, x, h - 64);
-
-        SDL_RenderPresent(*renderer);
     }
 
     void update() {

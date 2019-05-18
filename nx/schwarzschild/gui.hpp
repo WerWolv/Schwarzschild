@@ -3,8 +3,12 @@
 #include <switch.h>
 #include <functional>
 #include <vector>
+#include <memory>
 
 #include <SDL.h>
+
+#include <schwarzschild/ui/ui_element.hpp>
+#include <schwarzschild/utils/types.hpp>
 
 namespace schwarzschild {
 
@@ -26,12 +30,9 @@ namespace schwarzschild {
         }
     
         virtual void render(SDL_Renderer **renderer) = 0;
+        virtual void update() = 0;
 
-        void update() {
-
-        }
-
-        virtual void onInput(u32 keys, InputType inputType) final {
+        void onInput(u32 keys, InputType inputType) {
             switch (inputType) {
                 case KEY_HELD:
                     for (u32 i = 0; i < m_buttonHeldCallbacks.size(); i++)
@@ -52,7 +53,12 @@ namespace schwarzschild {
             }
         }
     
-        virtual Result registerButtonHandler(HidControllerKeys key, InputType inputType, std::function<void()> function) final {
+    std::vector<schwarzschild::ui::IUIElement*>& getUIElements() {
+        return m_uiElements;
+    }    
+
+    protected:
+        Result registerButtonHandler(HidControllerKeys key, InputType inputType, std::function<void()> function) {
             switch (inputType) {
                 case KEY_HELD:
                     m_buttonHeldCallbacks.push_back(std::make_pair(key, function));
@@ -71,7 +77,13 @@ namespace schwarzschild {
             return 0;
         }
 
-    protected:
+        template<typename T, typename std::enable_if<std::is_base_of<schwarzschild::ui::IUIElement, T>::value>::type* = nullptr, typename K>
+        Result addUIElement(K args) {
+            m_uiElements.push_back(new T(args));
+
+            return 0;
+        }
+
         Result quit() {
             SDL_Event quitEvent;
             quitEvent.type = SDL_QUIT;
@@ -88,5 +100,6 @@ namespace schwarzschild {
         std::vector<std::pair<HidControllerKeys, std::function<void()>>> m_buttonDownCallbacks;
         std::vector<std::pair<HidControllerKeys, std::function<void()>>> m_buttonUpCallbacks;
 
+        std::vector<schwarzschild::ui::IUIElement*> m_uiElements;
     };
 }

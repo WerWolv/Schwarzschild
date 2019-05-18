@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <SDL.h>
+#include <SDL_ttf.h>
 
 namespace schwarzschild {
 
@@ -32,6 +33,11 @@ namespace schwarzschild {
                     SDL_Quit();
                 }
             }
+
+            plGetSharedFontByType(&fontData, PlSharedFontType_Standard);
+            plGetSharedFontByType(&fontDataExt, PlSharedFontType_NintendoExt);
+
+            TTF_Init();
 
             m_appRunning = true;
         }
@@ -75,11 +81,19 @@ namespace schwarzschild {
                     }
                 }
 
+                SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
+                SDL_RenderClear(m_renderer);
+
                 if (m_registeredGuis[m_currGui] != nullptr)
                     m_registeredGuis[m_currGui]->render(&m_renderer);
 
                 for (u8 i = 0; i < sizeof(m_buttonDown); i++) 
                     m_registeredGuis[m_currGui]->onInput(1 << i, m_buttonDown[i] ? Gui::InputType::KEY_HELD : Gui::InputType::KEY_NOT_HELD);
+
+                for (auto uiElement : m_registeredGuis[m_currGui]->getUIElements())
+                    uiElement->render(m_renderer);
+
+                SDL_RenderPresent(m_renderer);
             }
 
             return 0;
@@ -116,6 +130,8 @@ namespace schwarzschild {
 
         std::map<std::string, Gui*> m_registeredGuis;
         std::string m_currGui;
+
+        PlFontData fontData, fontDataExt;
 
         bool m_buttonDown[32];
     };
