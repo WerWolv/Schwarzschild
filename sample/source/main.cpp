@@ -6,11 +6,15 @@
 
 #include <gui_test.hpp>
 
+#define NXLINK_DEBUG 1
+
 int main(int argc, char **argv) {
     schwarzschild::Application *app = new schwarzschild::Application();
 
-    socketInitializeDefault();
-    nxlinkStdio();
+    #if NXLINK_DEBUG
+        socketInitializeDefault();
+        nxlinkStdio();
+    #endif
 
     app->registerGui("test", new GuiTest());
 
@@ -18,5 +22,7 @@ int main(int argc, char **argv) {
 
     delete app;
 
-    socketExit();
+    #if NXLINK_DEBUG
+        socketExit();
+    #endif
 }
