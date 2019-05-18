@@ -10,6 +10,7 @@ public:
         Gui::registerButtonHandler(KEY_PLUS, Gui::InputType::KEY_DOWN, std::bind(&GuiTest::onPlusButtonPressed, this));
 
         Gui::addUIElement<schwarzschild::ui::Button>(schwarzschild::utils::ButtonArgs(50, 50, 500, 100, "Test"));
+        Gui::addUIElement<schwarzschild::ui::Image>(schwarzschild::utils::ImageArgs(50, 200, "sdmc:/test.png"));
     }
 
     ~GuiTest() {

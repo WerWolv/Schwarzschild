@@ -26,4 +26,13 @@ namespace schwarzschild::utils {
         int x, y, w, h;
         std::string text;
     };
+
+    class ImageArgs : public UIElementArgs {
+    public:
+        ImageArgs() : UIElementArgs() {}
+        ImageArgs(int x, int y, std::string path) : UIElementArgs(), x(x), y(y), path(path) {}
+        ~ImageArgs(){}
+        int x, y, w, h;
+        std::string path;
+    };
 }

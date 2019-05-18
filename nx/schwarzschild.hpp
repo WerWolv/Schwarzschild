@@ -12,3 +12,4 @@ enum {
 
 #include <schwarzschild/application.hpp>
 #include <schwarzschild/ui/button.hpp>
+#include <schwarzschild/ui/image.hpp>
