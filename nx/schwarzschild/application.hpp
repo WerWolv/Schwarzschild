@@ -1,11 +1,13 @@
 #pragma once
 
-#include <schwarzschild/gui.hpp>
 #include <map>
 #include <string>
+
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
+
+#include <schwarzschild/gui.hpp>
 
 namespace schwarzschild {
 
@@ -48,7 +50,7 @@ namespace schwarzschild {
         ~Application() {
             for (auto [name, gui] : m_registeredGuis)
                 delete gui;
-                
+
             m_registeredGuis.clear();
 
             plExit();

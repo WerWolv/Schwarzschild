@@ -6,7 +6,7 @@
 namespace schwarzschild::ui {
     class Image : public IUIElement {
     public:
-        Image(schwarzschild::utils::ImageArgs args) : schwarzschild::ui::IUIElement(args) {
+        Image(schwarzschild::types::ImageArgs args) : schwarzschild::ui::IUIElement(args) {
             m_args = args;
 
             m_surface = IMG_Load(args.path.c_str());
@@ -44,7 +44,7 @@ namespace schwarzschild::ui {
 
         }
     private:
-        schwarzschild::utils::ImageArgs m_args;
+        schwarzschild::types::ImageArgs m_args;
         SDL_Surface* m_surface;
         SDL_Texture* m_texture;
     };

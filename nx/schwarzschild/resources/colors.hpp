@@ -1,7 +1,5 @@
 #pragma once
 
-#include <switch.h>
-
 namespace schwarzschild::resources {
     enum SwitchColors {
         Color_Dark_Background    = 0x2D2D2DFF,

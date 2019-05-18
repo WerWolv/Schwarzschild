@@ -1,13 +1,14 @@
 #pragma once
 
-#include <switch.h>
 #include <functional>
 #include <vector>
 #include <memory>
 
+#include <switch.h>
 #include <SDL.h>
 
 #include <schwarzschild/ui/ui_element.hpp>
+#include <schwarzschild/utils/utils.hpp>
 #include <schwarzschild/utils/types.hpp>
 
 namespace schwarzschild {
@@ -26,7 +27,7 @@ namespace schwarzschild {
         }
 
         virtual ~Gui() {
-            for (int i = 0; i < m_uiElements.size(); i++)
+            for (size_t i = 0; i < m_uiElements.size(); i++)
                 delete m_uiElements[i];
         }
     

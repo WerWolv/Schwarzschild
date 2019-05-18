@@ -6,7 +6,7 @@
 namespace schwarzschild::ui {
     class Text : public IUIElement {
     public:
-        Text(schwarzschild::utils::TextArgs args) : schwarzschild::ui::IUIElement(args) {
+        Text(schwarzschild::types::TextArgs args) : schwarzschild::ui::IUIElement(args) {
             m_args = args;
 
             // TODO: Support color schemes
@@ -42,7 +42,7 @@ namespace schwarzschild::ui {
 
         }
     private:
-        schwarzschild::utils::TextArgs m_args;
+        schwarzschild::types::TextArgs m_args;
         SDL_Surface* m_surface;
         SDL_Texture* m_texture;
     };

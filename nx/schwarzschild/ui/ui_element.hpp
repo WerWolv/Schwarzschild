@@ -8,7 +8,7 @@
 namespace schwarzschild::ui {
     class IUIElement {
     public:
-        IUIElement(schwarzschild::utils::UIElementArgs args) {}
+        IUIElement(schwarzschild::types::UIElementArgs args) {}
         
         virtual ~IUIElement() { }
 
