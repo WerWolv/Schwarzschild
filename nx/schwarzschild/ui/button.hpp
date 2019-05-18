@@ -6,7 +6,7 @@
 namespace schwarzschild::ui {
     class Button : public IUIElement {
     public:
-        Button(schwarzschild::types::ButtonArgs args) : schwarzschild::ui::IUIElement(args) {
+        Button(int x, int y, schwarzschild::types::ButtonArgs args) : schwarzschild::ui::IUIElement(x, y, args) {
             m_args = args;
         }
         
@@ -14,10 +14,10 @@ namespace schwarzschild::ui {
 
         }
 
-        void render(SDL_Renderer *renderer) {
+        void render(SDL_Renderer *renderer, int x, int y) {
             SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0xFF, 0xFF);
 
-            SDL_Rect rect = {m_args.x, m_args.y, m_args.w, m_args.h};
+            SDL_Rect rect = { x, y, m_args.w, m_args.h };
             SDL_RenderFillRect(renderer, &rect);
         }
 

@@ -6,7 +6,7 @@
 namespace schwarzschild::ui {
     class Text : public IUIElement {
     public:
-        Text(schwarzschild::types::TextArgs args) : schwarzschild::ui::IUIElement(args) {
+        Text(int x, int y, schwarzschild::types::TextArgs args) : schwarzschild::ui::IUIElement(x, y, args) {
             m_args = args;
 
             // TODO: Support color schemes
@@ -21,7 +21,7 @@ namespace schwarzschild::ui {
             SDL_DestroyTexture(m_texture);
         }
 
-        void render(SDL_Renderer *renderer) {
+        void render(SDL_Renderer *renderer, int x, int y) {
             if (m_texture == nullptr)
                 m_texture = SDL_CreateTextureFromSurface(renderer, m_surface);
 
@@ -29,7 +29,7 @@ namespace schwarzschild::ui {
             int textureHeight = 0;
 
             SDL_QueryTexture(m_texture, NULL, NULL, &textureWidth, &textureHeight);
-            SDL_Rect rect = { m_args.x, m_args.y, textureWidth, textureHeight };
+            SDL_Rect rect = { x, y, textureWidth, textureHeight };
 
             SDL_RenderCopy(renderer, m_texture, NULL, &rect);
         }

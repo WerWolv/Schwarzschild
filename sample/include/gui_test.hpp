@@ -15,10 +15,10 @@ public:
 
         Gui::registerButtonHandler(KEY_PLUS, Gui::InputType::KEY_DOWN, std::bind(&GuiTest::onPlusButtonPressed, this));
 
-        Gui::addUIElement<schwarzschild::ui::Button>(schwarzschild::types::ButtonArgs(50, 50, 500, 100, "Test"));
-        Gui::addUIElement<schwarzschild::ui::Image>(schwarzschild::types::ImageArgs(50, 200, "sdmc:/test.png"));
-        Gui::addUIElement<schwarzschild::ui::Text>(schwarzschild::types::TextArgs(50, 550, fontSize40, "Hello World in size 40!"));
-        Gui::addUIElement<schwarzschild::ui::Text>(schwarzschild::types::TextArgs(50, 640, fontSize80, "Hello World in size 80!"));
+        Gui::addUIElement<schwarzschild::ui::Button>(50, 50, schwarzschild::types::ButtonArgs(500, 100, "Test"));
+        Gui::addUIElement<schwarzschild::ui::Image>(50, 200, schwarzschild::types::ImageArgs("sdmc:/test.png"));
+        Gui::addUIElement<schwarzschild::ui::Text>(50, 550, schwarzschild::types::TextArgs(fontSize40, "Hello World in size 40!"));
+        Gui::addUIElement<schwarzschild::ui::Text>(50, 640, schwarzschild::types::TextArgs(fontSize80, "Hello World in size 80!"));
     }
 
     ~GuiTest() {

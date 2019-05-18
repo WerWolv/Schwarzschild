@@ -2,11 +2,12 @@
 
 #include <schwarzschild/ui/ui_element.hpp>
 #include <schwarzschild/utils/types.hpp>
+#include <schwarzschild/ui/text.hpp>
 
 namespace schwarzschild::ui {
     class Image : public IUIElement {
     public:
-        Image(schwarzschild::types::ImageArgs args) : schwarzschild::ui::IUIElement(args) {
+        Image(int x, int y, schwarzschild::types::ImageArgs args) : schwarzschild::ui::IUIElement(x, y, args) {
             m_args = args;
 
             m_surface = IMG_Load(args.path.c_str());
@@ -23,7 +24,7 @@ namespace schwarzschild::ui {
             SDL_DestroyTexture(m_texture);
         }
 
-        void render(SDL_Renderer *renderer) {
+        void render(SDL_Renderer *renderer, int x, int y) {
             if (m_texture == nullptr)
                 m_texture = SDL_CreateTextureFromSurface(renderer, m_surface);
 
@@ -32,7 +33,7 @@ namespace schwarzschild::ui {
 
             SDL_QueryTexture(m_texture, NULL, NULL, &textureWidth, &textureHeight);
 
-            SDL_Rect rect = { m_args.x, m_args.y, textureWidth, textureHeight };
+            SDL_Rect rect = { x, y, textureWidth, textureHeight };
             SDL_RenderCopy(renderer, m_texture, NULL, &rect);
         }
 

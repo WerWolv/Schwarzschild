@@ -101,7 +101,7 @@ namespace schwarzschild {
                     m_registeredGuis[m_currGui]->onInput(1 << i, m_buttonDown[i] ? Gui::InputType::KEY_HELD : Gui::InputType::KEY_NOT_HELD);
 
                 for (auto uiElement : m_registeredGuis[m_currGui]->getUIElements())
-                    uiElement->render(m_renderer);
+                    uiElement->renderInternal(m_renderer, 0, 0);
 
                 SDL_RenderPresent(m_renderer);
             }
