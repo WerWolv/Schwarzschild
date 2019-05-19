@@ -25,10 +25,11 @@ namespace schwarzschild::ui {
 
     protected:
         template<typename T, typename std::enable_if<std::is_base_of<schwarzschild::ui::IUIElement, T>::value>::type* = nullptr, typename K>
-        Result addUIElement(int x, int y, K args) {
-            m_uiElements.push_back(new T(x, y, args));
+        T* addUIElement(int x, int y, K args) {
+            T *uiElement = new T(x, y, args);
+            m_uiElements.push_back(uiElement);
 
-            return 0;
+            return uiElement;
         }
 
     private:
