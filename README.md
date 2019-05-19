@@ -1,5 +1,7 @@
-<img src="https://i.imgur.com/OgWpsFa.png" height="150">
+# Schwarzschild
 
+<p align="center"><img src="https://i.imgur.com/OgWpsFa.png" height="200">
+  
 ___
 
 A SDL based UI library to create clean and vanilla looking interfaces in Nintendo Switch homebrews
