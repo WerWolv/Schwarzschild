@@ -10,9 +10,7 @@ namespace schwarzschild::ui {
             m_args = args;
 
             // TODO: Support color schemes
-
-            SDL_Color White = {255, 255, 255};
-            m_surface = TTF_RenderText_Blended(args.font, args.text.c_str(), White);
+            m_surface = TTF_RenderText_Blended(args.font, args.text.c_str(), schwarzschild::resources::SwitchColors::Color_Dark_Text);
             m_texture = nullptr;
         }
         

@@ -11,6 +11,8 @@ enum {
 };
 
 #include <schwarzschild/application.hpp>
+#include <schwarzschild/resources/colors.hpp>
 #include <schwarzschild/ui/button.hpp>
+#include <schwarzschild/ui/header.hpp>
 #include <schwarzschild/ui/image.hpp>
 #include <schwarzschild/ui/text.hpp>

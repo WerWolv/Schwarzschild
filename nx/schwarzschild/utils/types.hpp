@@ -18,6 +18,16 @@ namespace schwarzschild::types {
         std::string text;
     };
 
+    class HeaderArgs : public UIElementArgs {
+    public:
+        HeaderArgs() : UIElementArgs() {}
+        HeaderArgs(std::string path, TTF_Font *font, std::string text) : UIElementArgs(), path(path), font(font), text(text) {}
+        ~HeaderArgs(){}
+        std::string path;
+        TTF_Font *font;
+        std::string text;
+    };
+
     class ImageArgs : public UIElementArgs {
     public:
         ImageArgs() : UIElementArgs() {}
