@@ -32,6 +32,10 @@ namespace schwarzschild::ui {
             return uiElement;
         }
 
+        IUIElement* getParent() {
+            return m_parent;
+        }
+
     private:
         IUIElement();
 
