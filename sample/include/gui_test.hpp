@@ -16,9 +16,9 @@ public:
         Gui::registerButtonHandler(KEY_PLUS, Gui::InputType::KEY_DOWN, std::bind(&GuiTest::onPlusButtonPressed, this));
 
         Gui::addUIElement<schwarzschild::ui::Header>(0, 0, schwarzschild::types::HeaderArgs("sdmc:/icon.png", fontSize42, "Schwarzschild"));
-        Gui::addUIElement<schwarzschild::ui::Button>(50, 200, schwarzschild::types::ButtonArgs(500, 100, "Test"));
-        Gui::addUIElement<schwarzschild::ui::Image>(50, 350, schwarzschild::types::ImageArgs("sdmc:/logo.png"));
-        Gui::addUIElement<schwarzschild::ui::Text>(50, 700, schwarzschild::types::TextArgs(fontSize80, "Hello World!"));
+        Gui::addUIElement<schwarzschild::ui::Button>(50, 200, schwarzschild::types::ButtonArgs(fontSize42, "My button"));
+        Gui::addUIElement<schwarzschild::ui::Image>(50, 400, schwarzschild::types::ImageArgs("sdmc:/logo.png"));
+        Gui::addUIElement<schwarzschild::ui::Text>(50, 750, schwarzschild::types::TextArgs(fontSize80, "Hello World!"));
     }
 
     ~GuiTest() {
@@ -43,5 +43,4 @@ public:
     void onPlusButtonPressed() {
         Gui::quit();
     }
-
 };

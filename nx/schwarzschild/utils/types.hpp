@@ -12,9 +12,9 @@ namespace schwarzschild::types {
     class ButtonArgs : public UIElementArgs {
     public:
         ButtonArgs() : UIElementArgs() {}
-        ButtonArgs(int w, int h, std::string text) : UIElementArgs(), w(w), h(h), text(text) {}
+        ButtonArgs(TTF_Font *font, std::string text) : UIElementArgs(), font(font), text(text) {}
         ~ButtonArgs(){}
-        int w, h;
+        TTF_Font *font;
         std::string text;
     };
 

@@ -6,6 +6,9 @@
 namespace schwarzschild::ui {
     class Text : public IUIElement {
     public:
+        int w;
+        int h;
+
         Text(int x, int y, IUIElement *parent, schwarzschild::types::TextArgs args) : schwarzschild::ui::IUIElement(x, y, parent, args) {
             m_args = args;
 
@@ -23,11 +26,11 @@ namespace schwarzschild::ui {
             if (m_texture == nullptr)
                 m_texture = SDL_CreateTextureFromSurface(renderer, m_surface);
 
-            int textureWidth  = 0;
-            int textureHeight = 0;
+            w = 0;
+            h = 0;
 
-            SDL_QueryTexture(m_texture, NULL, NULL, &textureWidth, &textureHeight);
-            SDL_Rect rect = { x, y, textureWidth, textureHeight };
+            SDL_QueryTexture(m_texture, NULL, NULL, &w, &h);
+            SDL_Rect rect = { x, y, w, h };
 
             SDL_RenderCopy(renderer, m_texture, NULL, &rect);
         }
