@@ -13,7 +13,8 @@ namespace schwarzschild::ui {
             m_args = args;
 
             // TODO: Support color schemes
-            m_surface = TTF_RenderUTF8_Blended(args.font, args.text.c_str(), schwarzschild::resources::SwitchColors::Color_Dark_Text);
+            m_surface = TTF_RenderText_Blended(args.font, args.text.c_str(), schwarzschild::resources::SwitchColors::Color_Dark_Text);
+            TTF_SizeText(args.font, args.text.c_str(), &m_w, &m_h);
             m_texture = nullptr;
         }
         
@@ -26,11 +27,7 @@ namespace schwarzschild::ui {
             if (m_texture == nullptr)
                 m_texture = SDL_CreateTextureFromSurface(renderer, m_surface);
 
-            w = 0;
-            h = 0;
-
-            SDL_QueryTexture(m_texture, NULL, NULL, &w, &h);
-            SDL_Rect rect = { x, y, w, h };
+            SDL_Rect rect = { x, y, m_w, m_h };
 
             SDL_RenderCopy(renderer, m_texture, NULL, &rect);
         }
@@ -42,9 +39,20 @@ namespace schwarzschild::ui {
         void onInteract(u64 kdown) {
 
         }
+
+        u32 getTextWidth() {
+            return m_w;
+        }
+
+        u32 getTextHeight() {
+            return m_h;
+        }
+
     private:
         schwarzschild::types::TextArgs m_args;
         SDL_Surface* m_surface;
         SDL_Texture* m_texture;
+
+        int m_w, m_h;
     };
 }
