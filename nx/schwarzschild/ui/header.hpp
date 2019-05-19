@@ -8,7 +8,7 @@
 namespace schwarzschild::ui {
     class Header : public IUIElement {
     public:
-        Header(int x, int y, schwarzschild::types::HeaderArgs args) : schwarzschild::ui::IUIElement(x, y, args) {
+        Header(int x, int y, IUIElement *parent, schwarzschild::types::HeaderArgs args) : schwarzschild::ui::IUIElement(x, y, parent, args) {
             m_args = args;
 
             IUIElement::addUIElement<schwarzschild::ui::Image>(100, 40, schwarzschild::types::ImageArgs(args.path));

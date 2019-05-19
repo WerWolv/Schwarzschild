@@ -7,7 +7,7 @@
 namespace schwarzschild::ui {
     class Image : public IUIElement {
     public:
-        Image(int x, int y, schwarzschild::types::ImageArgs args) : schwarzschild::ui::IUIElement(x, y, args) {
+        Image(int x, int y, IUIElement *parent, schwarzschild::types::ImageArgs args) : schwarzschild::ui::IUIElement(x, y, parent, args) {
             m_args = args;
 
             m_surface = IMG_Load(args.path.c_str());

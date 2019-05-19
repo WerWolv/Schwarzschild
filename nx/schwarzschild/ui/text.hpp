@@ -6,7 +6,7 @@
 namespace schwarzschild::ui {
     class Text : public IUIElement {
     public:
-        Text(int x, int y, schwarzschild::types::TextArgs args) : schwarzschild::ui::IUIElement(x, y, args) {
+        Text(int x, int y, IUIElement *parent, schwarzschild::types::TextArgs args) : schwarzschild::ui::IUIElement(x, y, parent, args) {
             m_args = args;
 
             // TODO: Support color schemes

@@ -6,7 +6,7 @@
 namespace schwarzschild::ui {
     class Button : public IUIElement {
     public:
-        Button(int x, int y, schwarzschild::types::ButtonArgs args) : schwarzschild::ui::IUIElement(x, y, args) {
+        Button(int x, int y, IUIElement *parent, schwarzschild::types::ButtonArgs args) : schwarzschild::ui::IUIElement(x, y, parent, args) {
             m_args = args;
         }
         
