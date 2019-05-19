@@ -38,19 +38,23 @@ namespace schwarzschild {
             switch (inputType) {
                 case KEY_HELD:
                     for (u32 i = 0; i < m_buttonHeldCallbacks.size(); i++)
-                        m_buttonHeldCallbacks[i].second();
+                        if (keys == m_buttonHeldCallbacks[i].first)
+                            m_buttonHeldCallbacks[i].second();
                     break;
                 case KEY_NOT_HELD:
                     for (u32 i = 0; i < m_buttonNotHeldCallbacks.size(); i++)
-                        m_buttonNotHeldCallbacks[i].second();
+                        if (keys == m_buttonNotHeldCallbacks[i].first)
+                            m_buttonNotHeldCallbacks[i].second();
                     break;
                 case KEY_DOWN:
                     for (u32 i = 0; i < m_buttonDownCallbacks.size(); i++)
-                        m_buttonDownCallbacks[i].second();
+                        if (keys == m_buttonDownCallbacks[i].first)
+                            m_buttonDownCallbacks[i].second();
                     break;
                 case KEY_UP:
                     for (u32 i = 0; i < m_buttonUpCallbacks.size(); i++)
-                        m_buttonUpCallbacks[i].second();
+                        if (keys == m_buttonUpCallbacks[i].first)
+                            m_buttonUpCallbacks[i].second();
                     break;
             }
         }
