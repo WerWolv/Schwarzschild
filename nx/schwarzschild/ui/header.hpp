@@ -25,7 +25,11 @@ namespace schwarzschild::ui {
                                              schwarzschild::resources::SwitchColors::Color_Dark_Text.g,
                                              schwarzschild::resources::SwitchColors::Color_Dark_Text.b,
                                              schwarzschild::resources::SwitchColors::Color_Dark_Text.a);
-            SDL_RenderDrawLine(renderer, 45, 130, 1920 - 45 , 130);
+
+            int w, h;
+            SDL_GetRendererOutputSize(renderer, &w, &h);
+
+            SDL_RenderDrawLine(renderer, 45, 130, w - 45 , 130);
         }
 
         void update() {
