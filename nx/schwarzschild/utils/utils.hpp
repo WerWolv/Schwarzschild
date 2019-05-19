@@ -15,10 +15,10 @@ namespace schwarzschild::utils {
 
     class Fonts {
     public:
-        static Result createNintendoFont(TTF_Font **font, int size) {
+        static Result createNintendoFont(TTF_Font **font, int size, PlSharedFontType type) {
             PlFontData fontData;
 
-            Result rc = plGetSharedFontByType(&fontData, PlSharedFontType_Standard);
+            Result rc = plGetSharedFontByType(&fontData, type);
             if (R_FAILED(rc)) {
                 return SchwarzschildError_FontLoadingFailed;
             }

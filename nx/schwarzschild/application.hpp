@@ -9,6 +9,9 @@
 
 #include <schwarzschild/gui.hpp>
 
+#define SDL_WINDOW_WIDTH  1920
+#define SDL_WINDOW_HEIGHT 1080
+
 namespace schwarzschild {
 
     class Application {
@@ -18,7 +21,7 @@ namespace schwarzschild {
                 SDL_Log("SDL_Init: %s\n", SDL_GetError());
             }
 
-            m_window = SDL_CreateWindow("sdl2_gles2", 0, 0, 1920, 1080, 0);
+            m_window = SDL_CreateWindow("sdl2_gles2", 0, 0, SDL_WINDOW_WIDTH, SDL_WINDOW_HEIGHT, 0);
             if (!m_window) {
                 SDL_Log("SDL_CreateWindow: %s\n", SDL_GetError());
                 SDL_Quit();

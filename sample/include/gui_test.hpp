@@ -7,18 +7,22 @@ public:
     GuiTest() : schwarzschild::Gui() {
         printf("GuiTest constr\n");
 
-        TTF_Font* fontSize42 = NULL;
-        TTF_Font* fontSize80 = NULL;
+        TTF_Font* fontSize42      = NULL;
+        TTF_Font* fontSize42Icons = NULL;
+        TTF_Font* fontSize80      = NULL;
 
-        schwarzschild::utils::Fonts::createNintendoFont(&fontSize42, 42);
-        schwarzschild::utils::Fonts::createNintendoFont(&fontSize80, 80);
+        schwarzschild::utils::Fonts::createNintendoFont(&fontSize42, 42, PlSharedFontType_Standard);
+        schwarzschild::utils::Fonts::createNintendoFont(&fontSize42Icons, 42, PlSharedFontType_NintendoExt);
+        schwarzschild::utils::Fonts::createNintendoFont(&fontSize80, 80, PlSharedFontType_Standard);
 
         Gui::registerButtonHandler(KEY_PLUS, Gui::InputType::KEY_DOWN, std::bind(&GuiTest::onPlusButtonPressed, this));
 
         Gui::addUIElement<schwarzschild::ui::Header>(0, 0, schwarzschild::types::HeaderArgs("sdmc:/icon.png", fontSize42, "Schwarzschild"));
-        Gui::addUIElement<schwarzschild::ui::Button>(50, 200, schwarzschild::types::ButtonArgs(fontSize42, "My button"));
-        Gui::addUIElement<schwarzschild::ui::Image>(50, 400, schwarzschild::types::ImageArgs("sdmc:/logo.png"));
-        Gui::addUIElement<schwarzschild::ui::Text>(50, 750, schwarzschild::types::TextArgs(fontSize80, "Hello World!"));
+        Gui::addUIElement<schwarzschild::ui::Text>(50, 200, schwarzschild::types::TextArgs(fontSize80, "Hello World!"));
+        Gui::addUIElement<schwarzschild::ui::Image>(50, 330, schwarzschild::types::ImageArgs("sdmc:/logo.png"));
+        Gui::addUIElement<schwarzschild::ui::Button>(50, 660, schwarzschild::types::ButtonArgs(fontSize42, "My button"));
+        // TODO: Find a better way to handle Shared Font Extended with text
+        Gui::addUIElement<schwarzschild::ui::Footer>(0, 0, schwarzschild::types::FooterArgs("sdmc:/icon2.png", fontSize42Icons, "\uE0E1          \uE0E0", fontSize42, "    Back      OK"));
     }
 
     ~GuiTest() {
@@ -26,7 +30,7 @@ public:
     }
 
     void render(SDL_Renderer **renderer) override {
-        static int w = 1920, h = 1080;
+        static int w = SDL_WINDOW_WIDTH, h = SDL_WINDOW_HEIGHT;
 
         SDL_SetRenderDrawColor(*renderer, schwarzschild::resources::SwitchColors::Color_Dark_Background.r,
                                           schwarzschild::resources::SwitchColors::Color_Dark_Background.g,

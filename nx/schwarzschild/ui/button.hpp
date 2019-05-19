@@ -20,6 +20,7 @@ namespace schwarzschild::ui {
         }
 
         void render(SDL_Renderer *renderer, int x, int y) {
+            // TODO: Support color schemes
             SDL_SetRenderDrawColor(renderer, schwarzschild::resources::SwitchColors::Color_Dark_Text.r,
                                              schwarzschild::resources::SwitchColors::Color_Dark_Text.g,
                                              schwarzschild::resources::SwitchColors::Color_Dark_Text.b,
@@ -28,6 +29,7 @@ namespace schwarzschild::ui {
             SDL_Rect outlineRect = { x, y, m_textChild->w + 2 + margin * 2, margin * 2 + m_textChild->h + 2 };
             SDL_RenderFillRect(renderer, &outlineRect);
 
+            // TODO: Support color schemes
             SDL_SetRenderDrawColor(renderer, schwarzschild::resources::SwitchColors::Color_Dark_Background.r,
                                              schwarzschild::resources::SwitchColors::Color_Dark_Background.g,
                                              schwarzschild::resources::SwitchColors::Color_Dark_Background.b,

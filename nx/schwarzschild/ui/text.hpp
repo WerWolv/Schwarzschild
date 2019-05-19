@@ -13,7 +13,7 @@ namespace schwarzschild::ui {
             m_args = args;
 
             // TODO: Support color schemes
-            m_surface = TTF_RenderText_Blended(args.font, args.text.c_str(), schwarzschild::resources::SwitchColors::Color_Dark_Text);
+            m_surface = TTF_RenderUTF8_Blended(args.font, args.text.c_str(), schwarzschild::resources::SwitchColors::Color_Dark_Text);
             m_texture = nullptr;
         }
         
