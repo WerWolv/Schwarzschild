@@ -5,10 +5,10 @@
 
 #include <schwarzschild/utils/types.hpp>
 
-namespace schwarzschild::ui {
+namespace sws::ui {
     class IUIElement {
     public:
-        IUIElement(int x, int y, IUIElement *parent, schwarzschild::types::UIElementArgs args) : m_x(x), m_y(y), m_parent(parent) {}
+        IUIElement(int x, int y, IUIElement *parent, sws::types::UIElementArgs args) : m_x(x), m_y(y), m_parent(parent) {}
         
         virtual ~IUIElement() { }
 
@@ -24,7 +24,7 @@ namespace schwarzschild::ui {
         }
 
     protected:
-        template<typename T, typename std::enable_if<std::is_base_of<schwarzschild::ui::IUIElement, T>::value>::type* = nullptr, typename K>
+        template<typename T, typename std::enable_if<std::is_base_of<sws::ui::IUIElement, T>::value>::type* = nullptr, typename K>
         T* addUIElement(int x, int y, K args) {
             T *uiElement = new T(x, y, this, args);
             m_uiElements.push_back(uiElement);
@@ -39,7 +39,7 @@ namespace schwarzschild::ui {
     private:
         IUIElement();
 
-        std::vector<schwarzschild::ui::IUIElement*> m_uiElements;
+        std::vector<sws::ui::IUIElement*> m_uiElements;
         int m_x, m_y;
         IUIElement *m_parent;
     };

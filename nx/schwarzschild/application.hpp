@@ -12,7 +12,7 @@
 #define SDL_WINDOW_WIDTH  1920
 #define SDL_WINDOW_HEIGHT 1080
 
-namespace schwarzschild {
+namespace sws {
 
     class Application {
     public:
@@ -73,18 +73,15 @@ namespace schwarzschild {
                 while (SDL_PollEvent(&event)) {
                     switch (event.type) {
                         case SDL_JOYAXISMOTION:
-                            SDL_Log("Joystick %d axis %d value: %d\n",
-                                    event.jaxis.which,
-                                    event.jaxis.axis, event.jaxis.value);
                             break;
 
                         case SDL_JOYBUTTONDOWN:                       
-                            m_registeredGuis[m_currGui]->onInput(1 << event.jbutton.which, Gui::InputType::KEY_DOWN);
-                            m_buttonDown[event.jbutton.which] = true;
+                            m_registeredGuis[m_currGui]->onInput(1 << event.jbutton.button, Gui::InputType::KEY_DOWN);
+                            m_buttonDown[event.jbutton.button] = true;
                             break;
                         case SDL_JOYBUTTONUP:                       
-                            m_registeredGuis[m_currGui]->onInput(1 << event.jbutton.which, Gui::InputType::KEY_UP);
-                            m_buttonDown[event.jbutton.which] = false;
+                            m_registeredGuis[m_currGui]->onInput(1 << event.jbutton.button, Gui::InputType::KEY_UP);
+                            m_buttonDown[event.jbutton.button] = false;
                             break;
                         case SDL_QUIT:
                             m_appRunning = false;

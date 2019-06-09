@@ -3,18 +3,18 @@
 #include <schwarzschild/ui/ui_element.hpp>
 #include <schwarzschild/utils/types.hpp>
 
-namespace schwarzschild::ui {
+namespace sws::ui {
     class Text : public IUIElement {
     public:
         int w;
         int h;
 
-        Text(int x, int y, IUIElement *parent, schwarzschild::types::TextArgs args) : schwarzschild::ui::IUIElement(x, y, parent, args) {
+        Text(int x, int y, IUIElement *parent, sws::types::TextArgs args) : sws::ui::IUIElement(x, y, parent, args) {
             m_args = args;
 
             // TODO: Support color schemes
-            m_surface = TTF_RenderText_Blended(args.font, args.text.c_str(), schwarzschild::resources::SwitchColors::Color_Dark_Text);
-            TTF_SizeText(args.font, args.text.c_str(), &m_w, &m_h);
+            m_surface = TTF_RenderUTF8_Blended(args.font, args.text.c_str(), sws::resources::colors::nx::Color_Dark_Text);
+            TTF_SizeUTF8(args.font, args.text.c_str(), &m_w, &m_h);
             m_texture = nullptr;
         }
         
@@ -49,7 +49,7 @@ namespace schwarzschild::ui {
         }
 
     private:
-        schwarzschild::types::TextArgs m_args;
+        sws::types::TextArgs m_args;
         SDL_Surface* m_surface;
         SDL_Texture* m_texture;
 

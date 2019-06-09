@@ -2,7 +2,7 @@
 
 #include <SDL_ttf.h>
 
-namespace schwarzschild::types {
+namespace sws::types {
     class UIElementArgs {
     public:
         UIElementArgs(){}

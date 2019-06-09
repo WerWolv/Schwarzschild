@@ -9,16 +9,20 @@
 #define NXLINK_DEBUG 1
 
 int main(int argc, char **argv) {
-    schwarzschild::Application *app = new schwarzschild::Application();
+    sws::Application *app = new sws::Application();
 
     #if NXLINK_DEBUG
         socketInitializeDefault();
         nxlinkStdio();
     #endif
 
+    romfsInit();
+
     app->registerGui("test", new GuiTest());
 
     app->start();
+
+    romfsExit();
 
     delete app;
 

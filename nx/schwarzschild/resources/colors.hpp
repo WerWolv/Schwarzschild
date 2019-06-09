@@ -3,8 +3,8 @@
 #include <switch.h>
 #include <SDL.h>
 
-namespace schwarzschild::resources {
-    namespace SwitchColors {
+namespace sws::resources {
+    namespace colors::nx {
         SDL_Color Color_Dark_Background     = { 0x2D, 0x2D, 0x2D, 0xFF };
         SDL_Color Color_Dark_Panel          = { 0x32, 0x32, 0x32, 0xFF };
         SDL_Color Color_Dark_Text           = { 0xFF, 0xFF, 0xFF, 0xFF };

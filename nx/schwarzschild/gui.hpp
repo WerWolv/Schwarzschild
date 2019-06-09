@@ -11,7 +11,7 @@
 #include <schwarzschild/utils/utils.hpp>
 #include <schwarzschild/utils/types.hpp>
 
-namespace schwarzschild {
+namespace sws {
 
     class Gui {
     public:
@@ -59,7 +59,7 @@ namespace schwarzschild {
             }
         }
     
-    std::vector<schwarzschild::ui::IUIElement*>& getUIElements() {
+    std::vector<sws::ui::IUIElement*>& getUIElements() {
         return m_uiElements;
     }    
 
@@ -83,7 +83,7 @@ namespace schwarzschild {
             return 0;
         }
 
-        template<typename T, typename std::enable_if<std::is_base_of<schwarzschild::ui::IUIElement, T>::value>::type* = nullptr, typename K>
+        template<typename T, typename std::enable_if<std::is_base_of<sws::ui::IUIElement, T>::value>::type* = nullptr, typename K>
         T* addUIElement(int x, int y, K args) {
             T *uiElement = new T(x, y, nullptr, args);
             m_uiElements.push_back(uiElement);
@@ -107,6 +107,6 @@ namespace schwarzschild {
         std::vector<std::pair<HidControllerKeys, std::function<void()>>> m_buttonDownCallbacks;
         std::vector<std::pair<HidControllerKeys, std::function<void()>>> m_buttonUpCallbacks;
 
-        std::vector<schwarzschild::ui::IUIElement*> m_uiElements;
+        std::vector<sws::ui::IUIElement*> m_uiElements;
     };
 }

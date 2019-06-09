@@ -5,7 +5,9 @@
 #include <switch.h>
 #include <SDL_ttf.h>
 
-namespace schwarzschild::utils {
+#define DBG_PRINT(x, ...) (printf("[DEBUG] %s:%d | " x "\n", __PRETTY_FUNCTION__, __LINE__ __VA_OPT__(,) __VA_ARGS__))
+
+namespace sws::utils {
     typedef union {
         struct {
             u8 r, g, b, a;
@@ -27,6 +29,7 @@ namespace schwarzschild::utils {
 
             return 0;
         }
+        
     private:
         Fonts() {}
     };

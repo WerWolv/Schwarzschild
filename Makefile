@@ -40,7 +40,7 @@ SOURCES		:=	sample/source
 DATA		:=	data
 INCLUDES	:=	sample/include nx
 EXEFS_SRC	:=	exefs_src
-#ROMFS	:=	romfs
+ROMFS		:=	sample/assets
 
 #---------------------------------------------------------------------------------
 # options for code generation

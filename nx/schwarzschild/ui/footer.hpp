@@ -5,16 +5,16 @@
 #include <schwarzschild/ui/text.hpp>
 #include <schwarzschild/utils/types.hpp>
 
-namespace schwarzschild::ui {
+namespace sws::ui {
     class Footer : public IUIElement {
     public:
-        Footer(int x, int y, IUIElement *parent, schwarzschild::types::FooterArgs args) : schwarzschild::ui::IUIElement(x, y, parent, args) {
+        Footer(int x, int y, IUIElement *parent, sws::types::FooterArgs args) : sws::ui::IUIElement(x, y, parent, args) {
             m_args = args;
 
-            IUIElement::addUIElement<schwarzschild::ui::Image>(100, SDL_WINDOW_HEIGHT - 130 + 30, schwarzschild::types::ImageArgs(args.path));
+            IUIElement::addUIElement<sws::ui::Image>(100, SDL_WINDOW_HEIGHT - 130 + 30, sws::types::ImageArgs(args.path));
             // TODO: compute the text size before rendering and then compute the relative position
-            IUIElement::addUIElement<schwarzschild::ui::Text>(SDL_WINDOW_WIDTH - 550, SDL_WINDOW_HEIGHT - 130 + 46, schwarzschild::types::TextArgs(args.font, args.text));
-            IUIElement::addUIElement<schwarzschild::ui::Text>(SDL_WINDOW_WIDTH - 550, SDL_WINDOW_HEIGHT - 130 + 46, schwarzschild::types::TextArgs(args.fontbutton, args.textbutton));
+            IUIElement::addUIElement<sws::ui::Text>(SDL_WINDOW_WIDTH - 550, SDL_WINDOW_HEIGHT - 130 + 46, sws::types::TextArgs(args.font, args.text));
+            IUIElement::addUIElement<sws::ui::Text>(SDL_WINDOW_WIDTH - 550, SDL_WINDOW_HEIGHT - 130 + 46, sws::types::TextArgs(args.fontbutton, args.textbutton));
         }
         
         ~Footer() {
@@ -23,10 +23,10 @@ namespace schwarzschild::ui {
 
         void render(SDL_Renderer *renderer, int x, int y) {
             // TODO: Support color schemes
-            SDL_SetRenderDrawColor(renderer, schwarzschild::resources::SwitchColors::Color_Dark_Text.r,
-                                             schwarzschild::resources::SwitchColors::Color_Dark_Text.g,
-                                             schwarzschild::resources::SwitchColors::Color_Dark_Text.b,
-                                             schwarzschild::resources::SwitchColors::Color_Dark_Text.a);
+            SDL_SetRenderDrawColor(renderer, sws::resources::colors::nx::Color_Dark_Text.r,
+                                             sws::resources::colors::nx::Color_Dark_Text.g,
+                                             sws::resources::colors::nx::Color_Dark_Text.b,
+                                             sws::resources::colors::nx::Color_Dark_Text.a);
 
             SDL_RenderDrawLine(renderer, 45, SDL_WINDOW_HEIGHT - 130, SDL_WINDOW_WIDTH - 45 , SDL_WINDOW_HEIGHT - 130);
         }
@@ -39,7 +39,7 @@ namespace schwarzschild::ui {
 
         }
     private:
-        schwarzschild::types::FooterArgs m_args;
+        sws::types::FooterArgs m_args;
     };
 }
 

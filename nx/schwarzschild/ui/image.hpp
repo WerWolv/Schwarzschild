@@ -4,10 +4,10 @@
 #include <schwarzschild/utils/types.hpp>
 #include <schwarzschild/ui/text.hpp>
 
-namespace schwarzschild::ui {
+namespace sws::ui {
     class Image : public IUIElement {
     public:
-        Image(int x, int y, IUIElement *parent, schwarzschild::types::ImageArgs args) : schwarzschild::ui::IUIElement(x, y, parent, args) {
+        Image(int x, int y, IUIElement *parent, sws::types::ImageArgs args) : sws::ui::IUIElement(x, y, parent, args) {
             m_args = args;
 
             m_surface = IMG_Load(args.path.c_str());
@@ -45,7 +45,7 @@ namespace schwarzschild::ui {
 
         }
     private:
-        schwarzschild::types::ImageArgs m_args;
+        sws::types::ImageArgs m_args;
         SDL_Surface* m_surface;
         SDL_Texture* m_texture;
     };
